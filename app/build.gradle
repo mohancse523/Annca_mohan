@@ -5,10 +5,10 @@ ext {
     PUBLISH_ARTIFACT_ID = 'annca'
     PUBLISH_VERSION = '0.3.7'
     PUBLISH_VERSION_CODE = 8
-    SUPPORT_VERSION = '25.3.1'
+    SUPPORT_VERSION = '27.0.3'
     TARGET_SDK = 24
     MIN_SDK = 16
-    BUILD_TOOLS = "25.0.2"
+    BUILD_TOOLS = "27.0.3"
 }
 
 android {
@@ -32,11 +32,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
-    testCompile 'junit:junit:4.12'
-    compile project(':annca')
+    implementation "com.android.support:appcompat-v7:27.1.1"
+    testImplementation 'junit:junit:4.12'
+    implementation project(':annca')
 }

@@ -20,10 +20,10 @@ ext {
     PUBLISH_ARTIFACT_ID = 'annca'
     PUBLISH_VERSION = '0.3.8'
     PUBLISH_VERSION_CODE = 12
-    SUPPORT_VERSION = '25.3.1'
+    SUPPORT_VERSION = '27.0.3'
     TARGET_SDK = 24
     MIN_SDK = 10
-    BUILD_TOOLS = "25.0.2"
+    BUILD_TOOLS = "27.0.3"
 }
 
 android {
@@ -123,11 +123,11 @@ bintray {
 }
 
 dependencies {
-    compile "com.android.support:support-v4:$SUPPORT_VERSION"
-    compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
-    compile 'com.writingminds:FFmpegAndroid:0.3.2'
-    androidTestCompile "com.android.support:support-annotations:$SUPPORT_VERSION"
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:support-v4:27.1.1"
+    implementation "com.android.support:appcompat-v7:27.1.1"
+    implementation 'com.writingminds:FFmpegAndroid:0.3.2'
+    androidTestImplementation "com.android.support:support-annotations:27.1.1"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
 
 task wrapper(type: Wrapper) {
