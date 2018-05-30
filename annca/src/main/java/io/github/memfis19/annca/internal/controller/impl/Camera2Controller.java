@@ -83,13 +83,13 @@ public class Camera2Controller implements CameraController<String>,
 
     @Override
     public void takePhoto() {
-        outputFile = TextUtils.isEmpty(configurationProvider.getFilePath()) ? CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_PHOTO) : new File(configurationProvider.getFilePath());
+        outputFile = CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_PHOTO, configurationProvider.getFilePath());
         camera2Manager.takePhoto(outputFile, this);
     }
 
     @Override
     public void startVideoRecord() {
-        outputFile = TextUtils.isEmpty(configurationProvider.getFilePath()) ? CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_VIDEO) : new File(configurationProvider.getFilePath());
+        outputFile = CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_VIDEO, configurationProvider.getFilePath());
         camera2Manager.startVideoRecord(outputFile, this);
     }
 

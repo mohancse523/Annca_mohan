@@ -170,10 +170,10 @@ public final class AnncaConfiguration {
         }
 
         // TODO: 4/21/17 need to add separate destination folder and file name pattern.
-//        public Builder setOutPutFilePath(String outPutFilePath) {
-//            anncaConfiguration.outPutFilePath = outPutFilePath;
-//            return this;
-//        }
+        public Builder setOutPutFilePath(String outPutFilePath) {
+            anncaConfiguration.outPutFilePath = outPutFilePath;
+            return this;
+        }
 
         public Builder setMediaQuality(@MediaQuality int mediaQuality) {
             anncaConfiguration.mediaQuality = mediaQuality;

@@ -12,8 +12,8 @@ ext {
 }
 
 android {
-    compileSdkVersion TARGET_SDK
-    buildToolsVersion BUILD_TOOLS
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "io.github.memfis19.sample"
@@ -37,7 +37,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
-    compile 'com.writingminds:FFmpegAndroid:0.3.2'
     testCompile 'junit:junit:4.12'
     compile project(':annca')
 }

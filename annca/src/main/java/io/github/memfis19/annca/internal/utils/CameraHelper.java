@@ -72,7 +72,7 @@ public final class CameraHelper {
         }
     }
 
-    public static File getOutputMediaFile(Context context, @AnncaConfiguration.MediaAction int mediaAction) {
+    /*public static File getOutputMediaFile(Context context, @AnncaConfiguration.MediaAction int mediaAction) {
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), context.getPackageName());
 
@@ -95,6 +95,19 @@ public final class CameraHelper {
             return null;
         }
 
+        return mediaFile;
+    }*/
+
+    public static File getOutputMediaFile(Context context, @AnncaConfiguration.MediaAction int mediaAction, String filePath) {
+        String fileName = filePath.substring(0, filePath.lastIndexOf('.'));
+        if (mediaAction == AnncaConfiguration.MEDIA_ACTION_PHOTO) {
+            filePath = fileName+".jpg";
+        } else if (mediaAction == AnncaConfiguration.MEDIA_ACTION_VIDEO) {
+            filePath = fileName+".mp4";
+        } else {
+            return null;
+        }
+        File mediaFile = new File(filePath);
         return mediaFile;
     }
 

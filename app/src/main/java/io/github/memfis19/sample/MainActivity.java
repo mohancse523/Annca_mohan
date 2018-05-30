@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,10 +85,15 @@ public class MainActivity extends AppCompatActivity {
                     new Annca(videoLimited.build()).launchCamera();
                     break;
                 case R.id.universalConfiguration:
+                    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), getPackageName());
+                    File mediaFile= new File(mediaStorageDir.getPath() + File.separator +
+                            "IMG_Mohan.jpg");
                     AnncaConfiguration.Builder universal = new AnncaConfiguration.Builder(activity, CAPTURE_MEDIA);
                     universal.setMediaAction(AnncaConfiguration.MEDIA_ACTION_UNSPECIFIED);
                     universal.setFlashMode(AnncaConfiguration.FLASH_MODE_ON);
-                    universal.setMediaResultBehaviour(AnncaConfiguration.CONTINUE);
+                    universal.setMediaResultBehaviour(AnncaConfiguration.PREVIEW);
+                    universal.setOutPutFilePath(mediaFile.getPath());
+                    Log.d("Media File Path", mediaFile.getPath());
                     new Annca(universal.build()).launchCamera();
                     break;
                 case R.id.dialogDemo:

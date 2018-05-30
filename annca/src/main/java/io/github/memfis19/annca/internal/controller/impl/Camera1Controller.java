@@ -78,13 +78,13 @@ public class Camera1Controller implements io.github.memfis19.annca.internal.cont
 
     @Override
     public void takePhoto() {
-        outputFile = TextUtils.isEmpty(configurationProvider.getFilePath()) ? CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_PHOTO) : new File(configurationProvider.getFilePath());
+        outputFile = CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_PHOTO, configurationProvider.getFilePath());
         cameraManager.takePhoto(outputFile, this);
     }
 
     @Override
     public void startVideoRecord() {
-        outputFile = TextUtils.isEmpty(configurationProvider.getFilePath()) ? CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_VIDEO) : new File(configurationProvider.getFilePath());
+        outputFile = CameraHelper.getOutputMediaFile(cameraView.getActivity(), AnncaConfiguration.MEDIA_ACTION_VIDEO, configurationProvider.getFilePath());
         cameraManager.startVideoRecord(outputFile, this);
     }
 
