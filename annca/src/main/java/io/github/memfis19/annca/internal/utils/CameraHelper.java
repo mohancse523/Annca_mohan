@@ -102,8 +102,12 @@ public final class CameraHelper {
         String fileName = filePath.substring(0, filePath.lastIndexOf('.'));
         if (mediaAction == AnncaConfiguration.MEDIA_ACTION_PHOTO) {
             filePath = fileName+".jpg";
+            File file = new File(fileName+".mp4");
+            file.delete();
         } else if (mediaAction == AnncaConfiguration.MEDIA_ACTION_VIDEO) {
             filePath = fileName+".mp4";
+            File file = new File(fileName+".jpg");
+            file.delete();
         } else {
             return null;
         }
