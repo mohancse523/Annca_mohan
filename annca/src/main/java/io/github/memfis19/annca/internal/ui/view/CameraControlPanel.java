@@ -47,6 +47,7 @@ public class CameraControlPanel extends RelativeLayout
     private TimerTaskBase countDownTimer;
     private long maxVideoFileSize = 0;
     private String mediaFilePath;
+    private String videoMessage;
 
     public interface SettingsClickListener {
         void onSettingsClick();
@@ -391,4 +392,14 @@ public class CameraControlPanel extends RelativeLayout
         }
     }
 
+    public String getVideoMessage() {
+        return videoMessage;
+    }
+
+    public void setVideoMessage(String videoMessage) {
+        this.videoMessage = videoMessage;
+        if(mediaActionSwitchView != null){
+            mediaActionSwitchView.setVideoMessage(getVideoMessage());
+        }
+    }
 }

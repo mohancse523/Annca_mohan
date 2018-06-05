@@ -1,1 +1,1 @@
-include ':app', ':annca', ':anncamohan'
+include ':app', ':annca'

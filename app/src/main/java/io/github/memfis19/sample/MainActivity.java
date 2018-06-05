@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     universal.setFlashMode(AnncaConfiguration.FLASH_MODE_ON);
                     universal.setMediaResultBehaviour(AnncaConfiguration.PREVIEW);
                     universal.setOutPutFilePath(mediaFile.getPath());
+                    universal.setVideoMessage("Skyline maximum attachment size is 10mb if your video file will be larger than this we will automatically reduce video quality to fit in these restrictions");
                     Log.d("Media File Path", mediaFile.getPath());
                     new Annca(universal.build()).launchCamera();
                     break;

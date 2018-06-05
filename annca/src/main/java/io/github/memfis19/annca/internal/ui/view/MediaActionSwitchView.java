@@ -1,6 +1,8 @@
 package io.github.memfis19.annca.internal.ui.view;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.IntDef;
@@ -40,6 +42,7 @@ public class MediaActionSwitchView extends ImageButton {
     private Drawable photoDrawable;
     private Drawable videoDrawable;
     private int padding = 5;
+    private String videoMessage;
 
     public MediaActionSwitchView(Context context) {
         this(context, null);
@@ -104,15 +107,40 @@ public class MediaActionSwitchView extends ImageButton {
 
         @Override
         public void onClick(View view) {
-            if (currentMediaActionState == ACTION_PHOTO) {
-                currentMediaActionState = ACTION_VIDEO;
-            } else currentMediaActionState = ACTION_PHOTO;
-
-            setIcons();
-
-            if (onMediaActionStateChangeListener != null)
-                onMediaActionStateChangeListener.onMediaActionChanged(currentMediaActionState);
+            if(getVideoMessage() != null && !getVideoMessage().equals("") && currentMediaActionState == ACTION_PHOTO){
+                new AlertDialog.Builder(context).setMessage(getVideoMessage())
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        }).setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        if (currentMediaActionState == ACTION_PHOTO) {
+                            currentMediaActionState = ACTION_VIDEO;
+                        } else currentMediaActionState = ACTION_PHOTO;
+                        setIcons();
+                        if (onMediaActionStateChangeListener != null){
+                            onMediaActionStateChangeListener.onMediaActionChanged(currentMediaActionState);
+                        }
+                    }
+                }).show();
+            }else{
+                if (currentMediaActionState == ACTION_PHOTO) {
+                    currentMediaActionState = ACTION_VIDEO;
+                } else currentMediaActionState = ACTION_PHOTO;
+                setIcons();
+                if (onMediaActionStateChangeListener != null){
+                    onMediaActionStateChangeListener.onMediaActionChanged(currentMediaActionState);
+                }
+            }
         }
     }
 
+    public String getVideoMessage() {
+        return videoMessage;
+    }
+
+    public void setVideoMessage(String videoMessage) {
+        this.videoMessage = videoMessage;
+    }
 }

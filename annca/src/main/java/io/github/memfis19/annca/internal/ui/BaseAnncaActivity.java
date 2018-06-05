@@ -63,6 +63,7 @@ public abstract class BaseAnncaActivity<CameraId> extends AnncaCameraActivity<Ca
     protected long videoFileSize = -1;
     protected int minimumVideoDuration = -1;
     protected String filePath = "";
+    protected String videoMessage = "";
 
     @MediaActionSwitchView.MediaActionState
     protected int currentMediaActionState;
@@ -168,6 +169,10 @@ public abstract class BaseAnncaActivity<CameraId> extends AnncaCameraActivity<Ca
                 filePath = bundle.getString(AnncaConfiguration.Arguments.FILE_PATH);
             }
 
+            if (bundle.containsKey(AnncaConfiguration.Arguments.VIDEO_MESSAGE)) {
+                videoMessage = bundle.getString(AnncaConfiguration.Arguments.VIDEO_MESSAGE);
+            }
+
             if (bundle.containsKey(AnncaConfiguration.Arguments.MEDIA_QUALITY)) {
                 switch (bundle.getInt(AnncaConfiguration.Arguments.MEDIA_QUALITY)) {
                     case AnncaConfiguration.MEDIA_QUALITY_AUTO:
@@ -248,6 +253,7 @@ public abstract class BaseAnncaActivity<CameraId> extends AnncaCameraActivity<Ca
             cameraControlPanel.setMaxVideoDuration(getVideoDuration());
             cameraControlPanel.setMaxVideoFileSize(getVideoFileSize());
             cameraControlPanel.setSettingsClickListener(this);
+            cameraControlPanel.setVideoMessage(videoMessage);
         }
 
         return cameraControlPanel;

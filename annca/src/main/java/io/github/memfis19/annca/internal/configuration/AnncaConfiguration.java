@@ -57,6 +57,7 @@ public final class AnncaConfiguration {
         String VIDEO_DURATION = "io.memfis19.annca.video_duration";
         String MINIMUM_VIDEO_DURATION = "io.memfis19.annca.minimum.video_duration";
         String VIDEO_FILE_SIZE = "io.memfis19.annca.camera_video_file_size";
+        String VIDEO_MESSAGE = "io.memfis19.annca.video_message";
         String FLASH_MODE = "io.memfis19.annca.camera_flash_mode";
         String FILE_PATH = "io.memfis19.annca.camera_video_file_path";
         String CAMERA_FACE = "io.memfis19.annca.camera_face";
@@ -128,6 +129,8 @@ public final class AnncaConfiguration {
 
     private String outPutFilePath = "";
 
+    private String videoMessage = "";
+
     @FlashMode
     private int flashMode = FLASH_MODE_AUTO;
 
@@ -172,6 +175,11 @@ public final class AnncaConfiguration {
         // TODO: 4/21/17 need to add separate destination folder and file name pattern.
         public Builder setOutPutFilePath(String outPutFilePath) {
             anncaConfiguration.outPutFilePath = outPutFilePath;
+            return this;
+        }
+
+        public Builder setVideoMessage(String videoMessage) {
+            anncaConfiguration.videoMessage = videoMessage;
             return this;
         }
 
@@ -255,6 +263,10 @@ public final class AnncaConfiguration {
 
     public String getOutPutFilePath() {
         return outPutFilePath;
+    }
+
+    public String getVideoMessage() {
+        return videoMessage;
     }
 
     public int getVideoDuration() {
